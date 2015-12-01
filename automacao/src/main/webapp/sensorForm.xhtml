@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="tituloJanela">Sensor</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{sensorController.iniciarConversacao()}" />
+	</f:metadata>
+
+	<ui:define name="conteudo">
+		<h:form>
+
+			<p:messages id="message" />
+
+			<p:panel header="Leitura Sensor">
+
+				<p:dataTable id="dtAgenda" var="agenda" value="#{agendaController.lazyDataModel}" rows="6" paginator="true"
+					paginatorPosition="bottom" selection="#{agendaController.objeto}" lazy="true" selectionMode="single"
+					rowKey="#{agenda.id}" emptyMessage="Nenhum registro encontrado" style=" text-align:center;">
+
+					<p:column headerText="Código" width="60">
+						<p:outputLabel value="#{agenda.id}" />
+					</p:column>
+
+					<p:column headerText="Data Início" width="100">
+						<p:outputLabel value="#{agenda.dataIncioFormatada}" />
+					</p:column>
+
+					<p:column headerText="Data Fím" width="100">
+						<p:outputLabel value="#{agenda.dataFimFormatada}" />
+					</p:column>
+
+					<p:column headerText="Hora Início" width="100">
+						<p:outputLabel value="#{agenda.horaIncioFormatada}" />
+					</p:column>
+
+					<p:column headerText="Hora Fim" width="100">
+						<p:outputLabel value="#{agenda.horaFimFormatada}" />
+					</p:column>
+
+					<p:column headerText="Tipo Agend." width="100">
+						<p:outputLabel value="Automático" rendered="#{agenda.tipoAgendamento eq 'A'}" />
+						<p:outputLabel value="Manual" rendered="#{agenda.tipoAgendamento eq 'M'}" />
+					</p:column>
+
+					<p:column headerText="Descrição">
+						<p:outputLabel value="#{agenda.descrição}" />
+					</p:column>
+
+				</p:dataTable>
+
+
+			</p:panel>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
+

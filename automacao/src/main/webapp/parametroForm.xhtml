@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="tituloJanela">Sistema de Irrigação</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{parametroController.iniciarConversacao()}" />
+	</f:metadata>
+
+	<ui:define name="conteudo">
+		<h:form>
+			<p:messages id="message" closable="true" />
+			<p:panel header="Parametro do Sistema" id="panelComponentes">
+
+				<h:panelGrid columns="2">
+
+					<p:outputLabel value="Qtd. Dias:" />
+					<p:inputText value="#{parametroController.objeto.quantidadeDia}"
+						disabled="#{parametroController.estadoFormulario eq 'VISUALIZAR'}" label="Qtd. Dias" required="true"
+						style="width : 407px;" />
+
+					<p:outputLabel value="IP:" />
+					<p:inputText value="#{parametroController.objeto.ip}"
+						disabled="#{parametroController.estadoFormulario eq 'VISUALIZAR'}" label="IP" required="true"
+						style="width : 407px;" />
+
+					<p:outputLabel value="Porta:" />
+					<p:inputText value="#{parametroController.objeto.porta}"
+						disabled="#{parametroController.estadoFormulario eq 'VISUALIZAR'}" label="Porta" required="true"
+						style="width : 407px;" />
+
+					<p:outputLabel value="Tipo Leitura Xml:" />
+					<p:selectOneRadio required="true" label="Tipo Leitura Xml" value="#{parametroController.objeto.leituraXml}"
+						disabled="#{parametroController.estadoFormulario eq 'VISUALIZAR'}">
+						<f:selectItems value="#{parametroController.leitorXml}" var="leitorXml" itemLabel="#{leitorXml.leitor}"
+							itemValue="#{leitorXml.tipo}">
+						</f:selectItems>
+						<p:ajax event="change" process="@this" update="@form" />
+					</p:selectOneRadio>
+
+
+				</h:panelGrid>
+
+				<br />
+				<br />
+
+				<h:panelGroup id="botaoCrud">
+
+					<p:commandButton value="Salvar" icon="salvar" action="#{parametroController.salvar()}" update="message"
+						rendered="#{parametroController.habilitaEditarInserir}" />
+					<p:spacer width="10px" height="10px" />
+
+					<p:commandButton value="Cancelar" icon="cancelar" action="#{parametroController.cancelar()}" ajax="false"
+						immediate="true" />
+
+				</h:panelGroup>
+
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="tituloJanela">Sistema de Irrigação</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{arquivoController.iniciarConversacao()}" />
+	</f:metadata>
+
+	<ui:define name="conteudo">
+		<h:form>
+			<p:messages id="message" closable="true" />
+			<p:panel header="Arquivos" id="panelComponentes">
+
+				<p:dataTable id="dtArquivo" var="arquivo" value="#{arquivoController.lazyDataModel}" rows="6" paginator="true"
+					paginatorPosition="bottom" selection="#{arquivoController.objeto}" lazy="true" selectionMode="single"
+					rowKey="#{arquivo.id}" emptyMessage="Nenhum registro encontrado" style=" text-align:center;">
+
+					<p:column headerText="Código" width="100">
+						<p:outputLabel value="#{arquivo.id}" />
+					</p:column>
+					<p:column headerText="Descrição" width="100">
+						<p:outputLabel value="#{arquivo.descricao}" />
+					</p:column>
+					<p:column headerText="Data Consulta" width="100">
+						<p:outputLabel value="#{arquivo.dataConsultaFormatada}" />
+					</p:column>
+					<p:column headerText="Formato" width="100">
+						<p:outputLabel value="#{arquivo.formato}" />
+					</p:column>
+					<p:column headerText="Nome" width="100">
+						<p:outputLabel value="SIM" rendered="#{arquivo.nome}" />
+					</p:column>
+
+				</p:dataTable>
+
+				<br />
+
+				<h:panelGroup id="botaoCrud">
+					<p:commandButton value="Novo" icon="novo" action="#{arquivoController.novo()}"
+						rendered="#{arquivoController.habilitaVisualizarCancelar}" update="panelComponentes" />
+					<p:spacer width="10px" height="10px" />
+
+					<p:commandButton value="Editar" icon="editar" action="#{arquivoController.editar()}" update="message"
+						rendered="#{arquivoController.habilitaVisualizarCancelar}" />
+					<p:spacer width="10px" height="10px" />
+					
+					<p:commandButton value="Deletar" icon="deletar" action="#{arquivoController.deletar()}" update="message,dtArquivo"
+						rendered="#{agendaController.habilitaVisualizarCancelar}" />
+					<p:spacer width="10px" height="10px" />
+
+					<p:commandButton value="Visualizar" icon="visualizar" action="#{arquivoController.visualizar()}"
+						rendered="#{arquivoController.habilitaVisualizarCancelar}" update="message" />
+					<p:spacer width="10px" height="10px" />
+
+				</h:panelGroup>
+
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

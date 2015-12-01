@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="tituloJanela">Sensor</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{sensorUmidadeSoloController.iniciarConversacao()}" />
+	</f:metadata>
+
+	<ui:define name="conteudo">
+		<h:form>
+
+			<p:messages id="message" />
+
+			<p:panel header="Leitura do Sensor">
+
+				<p:dataTable id="dtSensor" var="sensorSolo" value="#{sensorUmidadeSoloController.lazyDataModel}" rows="6" paginator="true"
+					paginatorPosition="bottom" selection="#{sensorUmidadeSoloController.objeto}" lazy="true" selectionMode="single" rowKey="#{sensorSolo.id}"
+					emptyMessage="Nenhum registro encontrado" style=" text-align:center;">
+
+					<p:column headerText="Código" width="60">
+						<p:outputLabel value="#{sensorSolo.id}" />
+					</p:column>
+
+					<p:column headerText="Data Leitura" width="100">
+						<p:outputLabel value="#{sensorSolo.sensor.dataLeituraFormatado}" />
+					</p:column>
+
+					<p:column headerText="Descrição" width="100">
+						<p:outputLabel value="#{sensorSolo.situacaoSolo}" />
+					</p:column>
+
+					<p:column headerText="Hora Início" width="100">
+						<p:outputLabel value="#{sensorSolo.sensor.horaInicioFormatado}" rendered="#{sensorSolo.situacaoSolo != 'Solo Úmido'}" />
+						<p:outputLabel value="---" rendered="#{sensorSolo.situacaoSolo eq 'Solo Úmido'}"/>
+					</p:column>
+
+					<p:column headerText="Hora Fím" width="100">
+						<p:outputLabel value="#{sensorSolo.sensor.horaFimFormatado}" rendered="#{sensorSolo.situacaoSolo != 'Solo Úmido'}"/>
+						<p:outputLabel value="---" rendered="#{sensorSolo.situacaoSolo eq 'Solo Úmido'}"/>
+					</p:column>
+
+					<p:column headerText="Tempo Irrigação" width="100">
+						<p:outputLabel value="#{sensorSolo.sensor.tempoIrrigacaoFormatado}" rendered="#{sensorSolo.situacaoSolo != 'Solo Úmido'}" />
+						<p:outputLabel value="---" rendered="#{sensorSolo.situacaoSolo eq 'Solo Úmido'}"/>
+					</p:column>
+
+				</p:dataTable>
+
+			</p:panel>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="tituloJanela">Sistema de Irrigação</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{arquivoController.iniciarConversacao()}" />
+	</f:metadata>
+
+	<ui:define name="conteudo">
+		<h:form enctype="multipart/form-data">
+			<p:messages id="message" closable="true" />
+			<p:panel header="Arquivo" id="panelComponentes">
+
+
+				<h:panelGrid columns="2" style="margin-bottom:10px">
+
+					<p:outputLabel value="Descrição:" />
+					<p:inputText label="Descrição" value="#{arquivoController.objeto.descricao}" required="true" />
+							
+					<p:outputLabel value="Arquivo:" />
+					<p:fileUpload value="#{arquivoController.arquivo}" mode="simple" skinSimple="true" update="message"
+						sizeLimit="100000" allowTypes="/(\.|\/)(xml)$/" dragDropSupport="true" required="true" label="Arquivo" />
+					
+					<p:outputLabel for="data" value="Data:" />
+					<p:calendar id="data" value="#{arquivoController.objeto.dataConsulta}" locale="pt"/>
+
+				</h:panelGrid>
+				<br />
+				<br />
+
+				<h:panelGroup id="botaoCrud">
+
+					<p:commandButton value="Salvar" icon="salvar" actionListener="#{arquivoController.salvar()}" update="message"
+						rendered="#{arquivoController.habilitaEditarInserir}" ajax="false" />
+
+					<p:spacer width="10px" height="10px" />
+
+					<p:commandButton value="Cancelar" icon="cancelar" action="#{arquivoController.cancelar()}" ajax="false"
+						immediate="true" />
+
+				</h:panelGroup>
+
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

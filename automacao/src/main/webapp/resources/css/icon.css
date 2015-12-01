@@ -1,0 +1,140 @@
+.home {
+	padding-right: 5px;
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/home.png) !important;
+}
+
+.sair {
+	padding-right: 5px;
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/sair.png) !important;
+}
+
+.configuracao {
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/conf.png) !important;
+	padding-right: 5px;
+}
+
+.storm {
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/storm.png) !important;
+	padding-right: 5px;
+}
+
+.user {
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/user.png) !important;
+	padding-right: 5px;
+}
+
+.sensor {
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/sensor.png) !important;
+	padding-right: 5px;
+}
+
+.relatorio {
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/relatorio.png) !important;
+	padding-right: 5px;
+}
+
+.grafico {
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/grafico.png) !important;
+	padding-right: 5px;
+}
+
+.agenda {
+	padding-right: 5px;
+	width: 18px;
+	height: 18px;
+	background-image: url(../resources/images/icon/agenda.png) !important;
+}
+
+.cadeado {
+	padding-right: 5px;
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/cadeado.png) !important;
+}
+
+.salvar {
+	padding-right: 5px;
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/salvar.png) !important;
+}
+
+.editar {
+	padding-right: 5px;
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/editar.png) !important;
+}
+
+.deletar {
+	padding-right: 5px;
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/deletar.png) !important;
+}
+
+.novo {
+	padding-right: 5px;
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/novo.png) !important;
+}
+
+.cancelar {
+	padding-right: 5px;
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/cancelar.png) !important;
+}
+
+.visualizar {
+	padding-right: 5px;
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/visualizar.png)
+		!important;
+}
+
+.desligar {
+	padding-right: 5px;
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/desligar.png) !important;
+}
+
+.ligar {
+	padding-right: 5px;
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/ligar.png) !important;
+}
+
+.sim {
+	padding-right: 5px;
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/sim.png) !important;
+}
+
+.nao {
+	padding-right: 5px;
+	width: 16px;
+	height: 16px;
+	background-image: url(../resources/images/icon/nao.png) !important;
+}

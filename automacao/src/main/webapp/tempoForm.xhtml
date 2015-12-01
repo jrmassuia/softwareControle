@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="tituloJanela">Previsão do Tempo</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{tempoController.iniciarConversacao()}" />
+	</f:metadata>
+
+	<ui:define name="conteudo">
+		<h:form>
+			<p:messages id="message" closable="true" />
+			<p:panel header="Previsão do tempo para Campo Grande MS">
+
+				<p:dataTable value="#{tempoController.listaTempo}" var="tempo" style=" text-align:center;"  emptyMessage="Não há dados cadastrados">
+
+		<p:column headerText="Dia Semana">
+						<p:outputLabel value="#{tempo.diaSemana}" />
+					</p:column>
+					<p:column headerText="Temp.  Mínima" width="108">
+						<p:outputLabel value="#{tempo.temperaturaMinima}" />
+					</p:column>
+					<p:column headerText="Temp. Máxima" width="111">
+						<p:outputLabel value="#{tempo.temperaturaMaxima}" />
+					</p:column>
+					<p:column headerText="Prob. Chuva" width="100">
+						<p:outputLabel value="#{tempo.probChuva} %" />
+					</p:column>
+					<p:column headerText="Prec. Chuva" width="100">
+						<p:outputLabel value="#{tempo.precChuva} mm" />
+					</p:column>
+					<p:column headerText="Situação" width="585">
+						<p:outputLabel value="#{tempo.situacao}" />
+					</p:column>
+
+				</p:dataTable>
+				<br />
+				<h:outputLink value="http://www.climatempo.com.br/" target="_blank">Fonte de Dados: Clima Tempo</h:outputLink>
+
+				<br />
+				<br />
+
+
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="tituloJanela" /></title>
+
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="estilos.css" />
+	<h:outputStylesheet library="css" name="icon.css" />
+	<h:outputStylesheet library="css" name="primefaces.css" />
+
+	<script type="text/javascript" src="resources/js/scheduleIdioma.js" />
+
+	<link rel="shortcut icon" href="#{request.contextPath}/favicon.ico" />
+</h:head>
+
+<h:body>
+
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+	<div class="container">
+
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Sistema de Irrigação</span> <span class="icon-bar" /> <span class="icon-bar" /> <span
+					class="icon-bar" /> <span class="icon-bar" />
+			</button>
+			<a class="navbar-brand" href="home.xhtml">Sistema de Irrigação</a>
+		</div>
+
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><p:link outcome="home" value="Início" /></li>
+				<li><p:link outcome="tempoForm" value="Previsão" /></li>
+				<li><p:link outcome="sensorUmidadeSoloList" value="Sensor" /></li>
+<!-- 				<li><p:link outcome="arquivoList.xhtml" value="Arquivo" /></li> -->
+				<li><p:link outcome="configuracaoForm.xhtml" value="Configuração" /></li>
+			</ul>
+		</div>
+
+	</div>
+
+	</nav>
+
+	<section id="portfolio">
+	<div class="container" align="center" style="font-size: 12px">
+		<ui:insert name="conteudo" />
+	</div>
+	</section>
+
+	<footer class="text-center">
+	<div class="footer-below">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">Romualdo Massuia Junior - 2015</div>
+			</div>
+		</div>
+	</div>
+	</footer>
+
+	<script type="text/javascript" src="resources/js/bootstrap.min.js" />
+
+	<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+
+	<div align="center">
+		<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false"
+			showHeader="false">
+			<p:graphicImage value="/resources/images/loader.gif" />
+			<br />
+			<h:outputText value="Carregando..." />
+		</p:dialog>
+	</div>
+
+</h:body>
+</html>

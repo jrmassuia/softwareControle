@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="tituloJanela">Sistema de Irrigação</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{proxyController.iniciarConversacao()}" />
+	</f:metadata>
+
+	<ui:define name="conteudo">
+		<h:form>
+			<p:messages id="message" closable="true" />
+			<p:panel header="Configuração" id="panelComponentes">
+
+				<h:panelGrid columns="2" style="margin-bottom:10px">
+					<p:selectOneRadio required="true" label="Proxy" value="#{proxyController.objeto.possuiProxy}"
+						disabled="#{proxyController.estadoFormulario eq 'VISUALIZAR'}">
+						<f:selectItems value="#{proxyController.configuracao}" var="configuracao" itemLabel="#{configuracao.proxy}"
+							itemValue="#{configuracao.tipo}">
+						</f:selectItems>
+						<p:ajax event="change" process="@this" update="@form" />
+					</p:selectOneRadio>
+				</h:panelGrid>
+
+				<h:panelGrid columns="2" rendered="#{proxyController.objeto.possuiProxy eq 'C'}" id="campoProxy">
+
+					<p:outputLabel value="Proxy " />
+					<p:inputText value="#{proxyController.objeto.host}" disabled="#{proxyController.estadoFormulario eq 'VISUALIZAR'}"
+						label="Descrição" required="true" style="width : 407px;" />
+
+					<p:outputLabel value="Porta " />
+					<p:inputText value="#{proxyController.objeto.porta}" disabled="#{proxyController.estadoFormulario eq 'VISUALIZAR'}"
+						label="Descrição" required="true" style="width : 407px;" />
+
+					<p:outputLabel value="Usuário " />
+					<p:inputText value="#{proxyController.objeto.usuario}"
+						disabled="#{proxyController.estadoFormulario eq 'VISUALIZAR'}" label="Usuário" required="true"
+						style="width : 407px;" />
+
+					<p:outputLabel value="Senha " />
+					<p:password value="#{proxyController.objeto.senha}" disabled="#{proxyController.estadoFormulario eq 'VISUALIZAR'}"
+						label="Senha" required="true" style="width : 407px;" />
+
+				</h:panelGrid>
+
+				<br />
+				<br />
+
+				<h:panelGroup id="botaoCrud">
+
+					<p:commandButton value="Salvar" icon="salvar" action="#{proxyController.salvar()}" update="message"
+						rendered="#{proxyController.habilitaEditarInserir}" />
+					<p:spacer width="10px" height="10px" />
+
+					<p:commandButton value="Cancelar" icon="cancelar" action="#{proxyController.cancelar()}" ajax="false"
+						immediate="true" />
+
+				</h:panelGroup>
+
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

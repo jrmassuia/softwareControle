@@ -1,0 +1,133 @@
+.ui-menuitem-text {
+	font-style: bold;
+	font-family: Arial;
+	text-align: center;
+}
+
+/*
+.ui-inputfield {
+	float: left;
+	margin: 14px 0 0px 5px;
+	height: 40px;
+	display: table;
+}
+*/
+
+/*Campo Inputext*/
+.ui-inputfield .ui-inputtext .ui-widget .ui-state-default .ui-corner-all
+	{
+	padding: none !important;
+}
+
+.ui-widget-content .ui-inputfield {
+	height: 21px;
+	padding: 2px;
+}
+
+.ui-button {
+	text-align: center !important;
+	font-size-adjust: inherit !important;
+	font-size: 8pt !important;
+	height: 30px !important;
+	width: 80px !important;
+}
+
+.ui-panel .ui-panel-content {
+	padding: 10px 5px !important;
+	display: table;
+	width: 98.2%;
+	min-width: 0em;
+	background: rgba(0, 0, 0, 0);
+}
+
+.ui-button-text-only .ui-button-text {
+	text-align: center !important;
+	font-size-adjust: inherit !important;
+	font-size: 8pt !important;
+	height: 30px !important;
+	width: 80px !important;
+}
+
+.nea-button-fields {
+	clear: both;
+	margin: 0 auto;
+	align-content: center;
+}
+
+.customPanelGrid tr, .customPanelGrid td {
+	border: 0 !important;
+}
+
+.ui-widget {
+	font-size: 13px;
+}
+
+.ui-breadcrumb {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	border: 0;
+	background-color: #FFFFFF;
+}
+
+.ui-tabs .ui-tabs-panel {
+	background: #fff !important;
+	float: left;
+}
+
+.ui-tabs {
+	display: table !important;
+}
+
+.ui-tabs.ui-tabs-top>.ui-tabs-nav {
+	padding: .2em .2em 0;
+	background: white;
+	border: none;
+}
+
+.ui-widget-user-sistem {
+	right: 2%;
+	text-align: right;
+	position: absolute;
+	float: right;
+	text-align: right;
+	padding-top: 13px;
+}
+
+.user-sistem {
+	font-weight: lighter;
+	color: #FFFFFF;
+	vertical-align: bottom;
+	font-size: 17px;
+	font-family: Trebuchet MS;
+	line-height: 17px;
+}
+
+.ui-chkbox .ui-chkbox-box {
+	width: 14px !important;
+	height: 14px !important;
+}
+
+.ui-link {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+	font-size: 14px !important;
+}
+
+/* Grid Zebrada */
+.ui-datatable-odd {
+	background: none repeat scroll 0 0 #DFECFD;
+}
+/*ALTERA A FONTE DO TITULO DA TABELA*/
+.ui-datatable .ui-datatable-header, .ui-datatable .ui-datatable-footer {
+	font-size: 12px;
+	text-shadow: none;
+}
+/*ALTERA A FONTE DO CAMPO DA COLUNA*/
+.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td {
+	font-size: 11px;
+	text-shadow: none;
+}
+
+.ui-dialog-title {
+	font-size: 18px !important;
+}

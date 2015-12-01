@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="tituloJanela">Sistema de Irrigação</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{proxyController.iniciarConversacao()}" />
+	</f:metadata>
+
+	<ui:define name="conteudo">
+		<h:form>
+			<p:messages id="message" closable="true" />
+			<p:panel header="Configuração" id="panelComponentes">
+
+				<p:dataTable id="dtConfiguracao" var="configuracao" value="#{proxyController.lazyDataModel}" rows="6"
+					paginator="true" paginatorPosition="bottom" selection="#{proxyController.objeto}" lazy="true"
+					selectionMode="single" rowKey="#{configuracao.id}" emptyMessage="Nenhum registro encontrado"
+					style=" text-align:center;">
+
+					<p:column headerText="Proxy" width="100">
+						<p:outputLabel value="#{configuracao.host}" />
+					</p:column>
+					<p:column headerText="Porta" width="100">
+						<p:outputLabel value="#{configuracao.porta}" />
+					</p:column>
+					<p:column headerText="Usuario" width="100">
+						<p:outputLabel value="#{configuracao.usuario}" />
+					</p:column>
+					<p:column headerText="Senha" width="100">
+						<p:outputLabel value="**********" />
+					</p:column>
+					<p:column headerText="Possui Proxy" width="100">
+						<p:outputLabel value="SIM" rendered="#{configuracao.possuiProxy eq 'C'}" />
+						<p:outputLabel value="NÃO" rendered="#{configuracao.possuiProxy eq 'S'}" />
+					</p:column>
+
+				</p:dataTable>
+
+				<br />
+
+				<h:panelGroup id="botaoCrud">
+
+					<p:commandButton value="Editar" icon="editar" action="#{proxyController.editar()}" update="message"
+						rendered="#{proxyController.habilitaVisualizarCancelar}" />
+					<p:spacer width="10px" height="10px" />
+
+					<p:commandButton value="Visualizar" icon="visualizar" action="#{proxyController.visualizar()}"
+						rendered="#{proxyController.habilitaVisualizarCancelar}" update="message" />
+					<p:spacer width="10px" height="10px" />
+
+				</h:panelGroup>
+
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

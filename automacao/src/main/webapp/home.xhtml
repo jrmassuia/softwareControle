@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="tituloJanela">Sistema de Irrigação</ui:define>
+
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{sessionController.init()}" />
+	</f:metadata>
+
+	<ui:define name="conteudo">
+		<h:form>
+
+			<p:messages id="message" />
+
+			<p:panel id="agenda" header="Painel de Informações">
+
+				<h:panelGrid columns="4">
+
+					<p:panel header="Situação do Solo" style="margin-bottom:20px">
+						<br />
+						<h:outputText value="#{sensorController.objeto.sensorUmidadeSolo.situacaoSolo}" />
+						<br />
+					</p:panel>
+
+					<p:panel header="Intervalo De Dias" style="margin-bottom:20px">
+
+						<br />
+						<h:outputText value="#{sensorController.objeto.intervaloDia}" />
+						<br />
+						
+					</p:panel>
+					
+					<p:panel header="Próxima Chuva" style="margin-bottom:20px">
+						<br />
+						<h:outputText value="#{sensorController.objeto.proximaChuva}" />
+						<br />
+					</p:panel>
+
+				</h:panelGrid>
+
+				<h:panelGrid columns="2">
+
+					<p:commandButton value="Consultar" update="@form" action="#{sensorController.consultarSensores()}" icon="visualizar" />
+					<p:commandButton value="Executar" update="@form" action="#{sensorController.executarTarefa()}" icon="visualizar" />
+
+				</h:panelGrid>
+
+
+			</p:panel>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

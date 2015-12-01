@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="tituloJanela">Sistema de Irrigação</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{configuracaoController.iniciarConversacao()}" />
+	</f:metadata>
+
+	<ui:define name="conteudo">
+		<h:form>
+			<p:messages id="message" closable="true" />
+			<p:panel header="Configuracao do Sistema" id="panelComponentes">
+
+				<h:panelGrid columns="2">
+
+					<p:outputLabel value="Host Rot." />
+					<p:inputText value="#{configuracaoController.objeto.host}" />
+
+					<p:outputLabel value="Porta Rot." />
+					<p:inputText value="#{configuracaoController.objeto.porta}" />
+
+					<p:outputLabel value="Usuário" />
+					<p:inputText value="#{configuracaoController.objeto.usuario}" />
+
+					<p:outputLabel value="Senha" />
+					<p:inputText value="#{configuracaoController.objeto.senha}" />
+
+					<p:outputLabel value="Ip Arduino" />
+					<p:inputText value="#{configuracaoController.objeto.ipArduino}" />
+
+					<p:outputLabel value="Porta Arduino" />
+					<p:inputText value="#{configuracaoController.objeto.portaArudino}" />
+
+					<p:outputLabel value="Qtd. Dias" />
+					<p:inputText value="#{configuracaoController.objeto.quantidadeDia}" />
+
+					<p:outputLabel value="Proxy" />
+					<p:selectOneRadio value="#{configuracaoController.objeto.possuiProxy}" label="Proxy" required="true">
+						<f:selectItems var="proxy" value="#{configuracaoController.listaProxy}" itemValue="#{proxy}" itemLabel="#{proxy.proxy}" />
+					</p:selectOneRadio>
+
+					<p:outputLabel value="Valida Ações" />
+					<p:selectOneRadio value="#{configuracaoController.objeto.validaAcoes}" label="Valida Ações" required="true">
+						<f:selectItems var="valida" value="#{configuracaoController.listaValidaAcoes}" itemValue="#{valida}" itemLabel="#{valida.tipo}" />
+					</p:selectOneRadio>
+
+				</h:panelGrid>
+
+				<p:commandButton value="Salvar" action="#{configuracaoController.salvar}" update="message" icon="salvar" />
+
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
